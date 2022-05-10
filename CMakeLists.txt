@@ -50,8 +50,10 @@ else()
     target_link_libraries(SDL2_net wsock32 ws2_32 iphlpapi)
   endif()
 
-  target_include_directories(
-    SDL2_net PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/SDL2>)
+  target_include_directories(SDL2_net
+          PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/SDL2>
+          PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+          )
 
   install(
     TARGETS SDL2_net
